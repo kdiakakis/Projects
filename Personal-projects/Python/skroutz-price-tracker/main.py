@@ -13,14 +13,14 @@ TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 URL = "https://www.skroutz.gr/s/65089742/samsung-odyssey-g5-g50sf-oled-hdr-gaming-monitor-27-qhd-2560x1440-180hz-me-chrono-apokrisis-0-03ms-gtg.html"
-STOXOS = 150
-INTERVAL = 3600
+TARGET_PRICE = 150
+CHECK_INTERVAL = 3600  # seconds
 
 
-def steile_minima(keimeno):
+def send_message(text):
     requests.get(
         f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-        params={"chat_id": CHAT_ID, "text": keimeno},
+        params={"chat_id": CHAT_ID, "text": text},
         timeout=10,
     )
 
@@ -28,9 +28,9 @@ def steile_minima(keimeno):
 def get_price(driver):
     driver.get(URL)
     time.sleep(5)
-    tima = driver.find_element(By.CLASS_NAME, "integer-part").text
-    lepta = driver.find_element(By.CLASS_NAME, "decimal-part").text
-    return float(tima.replace(".", "") + "." + lepta.replace(",", ""))
+    integer_part = driver.find_element(By.CLASS_NAME, "integer-part").text
+    decimal_part = driver.find_element(By.CLASS_NAME, "decimal-part").text
+    return float(integer_part.replace(".", "") + "." + decimal_part.replace(",", ""))
 
 
 def main():
@@ -43,28 +43,28 @@ def main():
     )
     service = Service(ChromeDriverManager().install())
 
-    proigoumeni_timi = None
+    previous_price = None
 
     while True:
         driver = webdriver.Chrome(service=service, options=chrome_options)
         try:
-            print(f"[{time.strftime('%H:%M:%S')}] Έλεγχος τιμής στο Skroutz...")
-            timi = get_price(driver)
-            print(f"Βρέθηκε τιμή: {timi}€")
+            print(f"[{time.strftime('%H:%M:%S')}] Checking price on Skroutz...")
+            price = get_price(driver)
+            print(f"Price found: {price}€")
 
-            if timi <= STOXOS and timi != proigoumeni_timi:
-                steile_minima(f"Η τιμή έπεσε: {timi}€\n{URL}")
-                print("Ειδοποίηση στάλθηκε στο Telegram!\n")
+            if price <= TARGET_PRICE and price != previous_price:
+                send_message(f"Price dropped: {price}€\n{URL}")
+                print("Notification sent to Telegram!\n")
 
-            proigoumeni_timi = timi
+            previous_price = price
 
         except Exception as e:
-            print(f"Σφάλμα κατά τον έλεγχο: {e}")
+            print(f"Error while checking price: {e}")
         finally:
             driver.quit()
 
-        print("Αναμονή 1 ώρα μέχρι τον επόμενο έλεγχο...\n")
-        time.sleep(INTERVAL)
+        print("Waiting 1 hour until the next check...\n")
+        time.sleep(CHECK_INTERVAL)
 
 
 if __name__ == "__main__":
