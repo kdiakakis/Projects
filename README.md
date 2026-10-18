@@ -4,7 +4,7 @@ Stuff I build and break. Mostly Python, soon ESP32.
 
 ## what's inside
 
-- [**panelinies/**](panelinies): my own solutions for the Greek national exams (programming). Files are named by their 5-digit code from the official topics bank, which is public.
+- [**panelinies/**](panelinies-27): my own solutions for the Greek national exams (programming). Files are named by their 5-digit code from the official topics bank, which is public.
 - [**Personal-projects/Python/**](Personal-projects/Python): Python projects, including a port scanner and more soon
 
 ## note
