@@ -1,12 +1,11 @@
 # projects
 
-Stuff I build and break. Mostly Python, some Android, soon ESP32.
+Stuff I build and break. Mostly Python, soon ESP32.
 
 ## what's inside
 
-- **panelinies/**: my own solutions for the Greek national exams (Networks). Files are named by their 5-digit code from the official topics bank, which is public.
-- **personal-projects/python/**: Python projects
-- **personal-projects/python/android/**: Android projects, including a port scanner and more soon
+- [**panelinies/**](panelinies): my own solutions for the Greek national exams (programming). Files are named by their 5-digit code from the official topics bank, which is public.
+- [**Personal-projects/Python/**](Personal-projects/Python): Python projects, including a port scanner and more soon
 
 ## note
 
