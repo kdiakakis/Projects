@@ -1,1 +1,1 @@
-
+- [**panelinies-py27/**](panelinies-py27): my own solutions for the Greek national exams (programming, Python 2.7). Files are named by their 5-digit code from the official topics bank, which is public.
