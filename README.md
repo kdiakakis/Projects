@@ -12,4 +12,4 @@ Stuff I build and break. Mostly Python, some Android, soon ESP32.
 
 Security tools here are for learning and for networks I own. Don't be that guy.
 
-More about me: [kdiakis](https://github.com/kdiakakis)
+More about me: [kdiakakis](https://github.com/kdiakakis)
