@@ -6,7 +6,7 @@ A simple multithreaded TCP port scanner written in Python. It resolves a hostnam
 
 ## Features
 
-- Resolves a domain name to an IP address
+- Resolves a domain name to an IP address (or put the ip you want)
 - Scans ports 1-1023 using 100 threads for speed
 - Colored terminal output
 - No external dependencies (standard library only)
