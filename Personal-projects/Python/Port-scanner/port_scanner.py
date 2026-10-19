@@ -43,7 +43,6 @@ def print_info(msg):
 # ============================================
 
 def get_ip_web(web):
-    """Resolve a hostname to an IP address."""
     try:
         host_ip = socket.gethostbyname(web)
         print_ok(f"IP found: {host_ip} \n")
@@ -54,7 +53,6 @@ def get_ip_web(web):
 
 
 def is_port_open(ip, port):
-    """Try to connect to a port. Returns True if it is open."""
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(0.2)
     port_situation = s.connect_ex((ip, port))
@@ -67,7 +65,6 @@ def is_port_open(ip, port):
 
 
 def scan_ports(ip, start_loop, end_loop):
-    """Scan a range of ports using multiple threads."""
     def check(port):
         if is_port_open(ip, port):
             return port
