@@ -8,7 +8,6 @@ from concurrent.futures import ThreadPoolExecutor
 # ============================================
 
 class C:
-    """ANSI color codes for the terminal"""
     GREEN = "\033[92m"
     RED = "\033[91m"
     YELLOW = "\033[93m"
