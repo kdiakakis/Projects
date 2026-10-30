@@ -38,7 +38,7 @@ def print_info(msg):
     print(f"{C.CYAN}[*]{C.RESET} {msg}")
 
 # ============================================
-# SCANNER FUNCTIONS
+# FUNCTIONS
 # ============================================
 
 def get_ip_web(web):
