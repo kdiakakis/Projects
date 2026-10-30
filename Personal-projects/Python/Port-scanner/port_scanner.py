@@ -84,7 +84,7 @@ def scan_ports(ip, start_loop, end_loop):
 if __name__ == '__main__':
     print_banner()
 
-    target = input('Enter the site you want to scan: ')
+    target = input('Enter the site/ip you want to scan: ')
     ip = get_ip_web(target)
     if ip != False:
         open_ports = scan_ports(ip, 1, 1023)
